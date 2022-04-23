@@ -832,7 +832,7 @@ initial begin
 	//Areebah 
 	//AREA OF AN ELLIPSE
 	
-	//RESET
+//RESET
 	inputA=16'b0000000000000000;
 	op=4'b0001;
 	#10;
@@ -842,8 +842,8 @@ initial begin
 	op=4'b0000;//NO-OP
 	#10;
 	//---------------------------------
-	//ADD 53
-	inputA=16'd0000000000000053;
+	//ADD 19
+	inputA=16'd0000000000000019;
 	op=4'b0010;//ADD
 	#10;
 	//---------------------------------
@@ -852,8 +852,8 @@ initial begin
 	op=4'b0000;//NO-OP
 	#10;
 	//---------------------------------
-	//MULTIPLY BY 27
-	inputA=16'd0000000000000027;
+	//MULTIPLY BY 15 
+	inputA=16'd0000000000000015;
 	op=4'b0100;//MULT
 	#10;
 	//---------------------------------
@@ -862,16 +862,19 @@ initial begin
 	op=4'b0000;//NO-OP
 	#10;
 	//---------------------------------
-	//MULTIPLY BY 31 (pi, cant go higher precision due to overflow)
+	//MULTIPLY BY 31
 	inputA=16'd0000000000000031;
 	op=4'b0100;//MULT
 	#10;
-	//--------------------------------- Good until here
+	//---------------------------------
 	//NO-OP
 	inputA=16'b0000000000000000;
 	op=4'b0000;//NO-OP
-	#10;
-	//Divide by 1,000 (A^2 scaled up by 100, pi scaled up by 10)
+	#5
+	hold = result;
+	#5;
+	//---------------------------------
+	//Divide by 1000
 	inputA=16'd0000000000001000;
 	op=4'b0101;
 	#5
@@ -883,7 +886,27 @@ initial begin
 	op=4'b0000;
 	#10;
 	//---------------------------------
-	//Mod by 1,000
+    //Reset
+    inputA = 16'b0000000000000000;
+    op = 4'b0001;
+    #10;
+    //---------------------------------
+    //NO-OP
+    inputA=16'b0000000000000000;
+    op=4'b0000;//NOT
+    #10;
+    //---------------------------------
+    //Add hold var
+    inputA = hold;
+    op = 4'b0010;
+    #10;
+    //---------------------------------
+    //NO-OP
+    inputA=16'b0000000000000000;
+    op=4'b0000;
+    #10;
+	//---------------------------------
+	//Mod by 100
 	inputA=16'd0000000000001000;
 	op = 4'b0110;
 	#5;
@@ -894,8 +917,7 @@ initial begin
 	inputA=16'b0000000000000000;
 	op=4'b0000;
 	#10;
-	$display("The area of a ellipse where axis a is 5.3 and axis b 2.7 is %3d.%-2d units.\n\n\n\n",whole,fraction);
-
+	$display("The area of a ellipse where axis a is 1.9 and axis b 1.5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
 
     ///////////////////////////////////////////////////////////////////////////////
 	// Areebah Fatima
@@ -1413,7 +1435,7 @@ initial begin
 	fraction = result;
 	#5;
 	//---------------------------------
-	$display("The area of a trapezoid with base 1: 1.4, base 2: 1.6, and height: 5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
+	$display("The area of a trapezoid with base 1: 1.4, base 2: 1.6, and height: 2.5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
 	
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -1427,21 +1449,43 @@ initial begin
 	op=4'b0010;//ADD 2
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000002;
 	op=4'b0100;//MULT 2 (Square)
+	#10;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
 	#10;
 	//---------------------------------
 	inputA=16'd0000000000000003;
 	op=4'b0100;//MULT 3
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000031;
 	op=4'b0100;//MULT pi (31 due to overflow)
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000003;
 	op=4'b0101;//DIV 3
-	#10;
+	#5;
+	hold = result;
+	#5;
 	//--------------------------------- Good until here
 	//NO-OP
 	inputA=16'b0000000000000000;
@@ -1453,6 +1497,26 @@ initial begin
 	#5
 	whole = result;
 	#5;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	//---------------------------------
+	//RESET
+	#10;
+	inputA=16'b0000000000000000;
+	op=4'b0001;//Reset
+	#10;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
+	//ADD hold
+	inputA=hold;
+	op=4'b0010;
+	#10;
 	//---------------------------------
 	//NO-OP
 	inputA=16'b0000000000000000;
@@ -1471,7 +1535,6 @@ initial begin
 	op=4'b0000;
 	#10;
 	$display("The volume of a cone where radius: 2 and height: 3 is %3d.%-2d units.\n",whole,fraction);
-	
 	$finish;
 
 end
