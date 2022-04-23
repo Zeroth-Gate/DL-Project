@@ -1413,7 +1413,7 @@ initial begin
 	fraction = result;
 	#5;
 	//---------------------------------
-	$display("The area of a trapezoid with base 1: 1.4, base 2: 1.6, and height: 5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
+	$display("The area of a trapezoid with base 1: 1.4, base 2: 1.6, and height: 2.5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
 	
 
 	///////////////////////////////////////////////////////////////////////////////
