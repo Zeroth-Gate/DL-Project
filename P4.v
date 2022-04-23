@@ -1470,7 +1470,7 @@ initial begin
 	inputA=16'b0000000000000000;
 	op=4'b0000;
 	#10;
-	$display("The volume of a cone where radius: 2 and height: 3 is %3d.%-2d units.\n\n\n\n",whole,fraction);
+	$display("The volume of a cone where radius: 2 and height: 3 is %3d.%-2d units.\n",whole,fraction);
 	
 	$finish;
 
