@@ -737,7 +737,7 @@ initial begin
 	#10;
 	$display("The volume of a square pyramid with height 5.7 and side length 2.1 is %3d.%-2d units.\n\n\n\n",whole,fraction);
 
-   
+
     ///////////////////////////////////////////////////////////////////////////////
 	//Adem
 	// Area of a circle with a radius of 2.6 units
@@ -829,9 +829,9 @@ initial begin
 
 
     ///////////////////////////////////////////////////////////////////////////////
-	//Areebah 
+	//Areebah
 	//AREA OF AN ELLIPSE
-	
+
 	//RESET
 	inputA=16'b0000000000000000;
 	op=4'b0001;
@@ -954,7 +954,7 @@ initial begin
 	op=4'b0000;
 	#10;
 	$display("The area of a parallelogram with base 5.5 and height 1.4 is %3d.%-2d units.\n\n\n\n",whole,fraction);
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	//Richard
 	//Area of Icosahedron
@@ -1235,10 +1235,10 @@ initial begin
 	op=4'b0000;
 	#10;
 	$display("The surface area of a cube with edge 1.7 is %3d.%-2d units.\n\n\n\n",whole,fraction);
-	
-	
+
+
     ///////////////////////////////////////////////////////////////////////////////
-	//Ayaan 
+	//Ayaan
 	// Volume of a cylinder with 1.3 radius and 2 height
 	inputA=16'b0000000000000000;
 	op=4'b0001;
@@ -1386,20 +1386,20 @@ initial begin
 	whole = result;
 	#5;
 	//---------------------------------
-    //Reset
-    inputA = 16'b0000000000000000;
-    op = 4'b0001;
-    #10;
-    //---------------------------------
-    //NO-OP
-    inputA=16'b0000000000000000;
-    op=4'b0000;
-    #10;
-    //---------------------------------
-    //Add hold var
-    inputA = hold;
-    op = 4'b0010;
-    #10;
+  //Reset
+  inputA = 16'b0000000000000000;
+  op = 4'b0001;
+  #10;
+  //---------------------------------
+  //NO-OP
+  inputA=16'b0000000000000000;
+  op=4'b0000;
+  #10;
+  //---------------------------------
+  //Add hold var
+  inputA = hold;
+  op = 4'b0010;
+  #10;
 	//---------------------------------
 	//NO-OP
 	inputA=16'b0000000000000000;
@@ -1414,7 +1414,7 @@ initial begin
 	#5;
 	//---------------------------------
 	$display("The area of a trapezoid with base 1: 1.4, base 2: 1.6, and height: 2.5 is %3d.%-2d units.\n\n\n\n",whole,fraction);
-	
+
 
 	///////////////////////////////////////////////////////////////////////////////
 	//Farhan Tahmid
@@ -1427,21 +1427,43 @@ initial begin
 	op=4'b0010;//ADD 2
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000002;
 	op=4'b0100;//MULT 2 (Square)
+	#10;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
 	#10;
 	//---------------------------------
 	inputA=16'd0000000000000003;
 	op=4'b0100;//MULT 3
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000031;
 	op=4'b0100;//MULT pi (31 due to overflow)
 	#10;
 	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
 	inputA=16'd0000000000000003;
 	op=4'b0101;//DIV 3
-	#10;
+	#5;
+	hold = result;
+	#5;
 	//--------------------------------- Good until here
 	//NO-OP
 	inputA=16'b0000000000000000;
@@ -1453,6 +1475,26 @@ initial begin
 	#5
 	whole = result;
 	#5;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	//---------------------------------
+	//RESET
+	#10;
+	inputA=16'b0000000000000000;
+	op=4'b0001;//Reset
+	#10;
+	//---------------------------------
+	//NO-OP
+	inputA=16'b0000000000000000;
+	op=4'b0000;
+	#10;
+	//---------------------------------
+	//ADD hold
+	inputA=hold;
+	op=4'b0010;
+	#10;
 	//---------------------------------
 	//NO-OP
 	inputA=16'b0000000000000000;
@@ -1471,7 +1513,7 @@ initial begin
 	op=4'b0000;
 	#10;
 	$display("The volume of a cone where radius: 2 and height: 3 is %3d.%-2d units.\n",whole,fraction);
-	
+
 	$finish;
 
 end
